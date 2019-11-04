@@ -53,15 +53,35 @@ namespace WebAPISample.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]Movie value)
+        public async Task<IHttpActionResult> Post([FromBody]Movie value)
         {
-            // Create movie in db logic
+            try
+            {
+                context.Movies.Add(value);
+                var movie = await context.SaveChangesAsync();
+
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public async Task<IHttpActionResult> Put(int id, [FromBody]Movie value)
         {
-            // Update movie in db logic
+            try
+            {
+                var movie = await Task.Run(() => context.Movies.Attach(value));
+
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // DELETE api/values/5
