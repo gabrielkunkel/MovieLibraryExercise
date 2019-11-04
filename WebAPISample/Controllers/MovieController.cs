@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WebAPISample.Models;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 
 namespace WebAPISample.Controllers
@@ -20,17 +21,27 @@ namespace WebAPISample.Controllers
         }
 
         // GET api/values
-        public IEnumerable<Movie> Get()
+        public async Task<IHttpActionResult> Get()
         {
-            var movies = context.Movies.ToList();
-            return movies;
+            try
+            {
+                var movies = await Task.Run(() => context.Movies);
+                
+                return Ok(movies);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+            
+            
         }
 
         // GET api/values/5
         public string Get(int id)
         {
-            var movie = context.Movies.Where(a => a.MovieId == id).Single();
-            return "value";
+            var movie = context.Movies.Where(a => a.MovieId == id).Single().ToString();
+            return movie;
         }
 
         // POST api/values
