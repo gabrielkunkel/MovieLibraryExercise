@@ -38,10 +38,18 @@ namespace WebAPISample.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
-            var movie = context.Movies.Where(a => a.MovieId == id).Single().ToString();
-            return movie;
+            try
+            {
+                var movie = await Task.Run(() => context.Movies.Where(m => m.MovieId == id).Single());
+
+                return Ok(movie);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // POST api/values
