@@ -20,6 +20,9 @@ var idForRecordToUpdate;
             success: function( data, textStatus, jQxhr ){
                 console.log("success?");
                 $('#response pre').html( data );
+                $('#formOneInput1').val('');
+                $('#formOneInput2').val('');
+                $('#formOneInput3').val('');
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
