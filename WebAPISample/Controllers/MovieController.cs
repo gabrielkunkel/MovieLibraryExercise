@@ -5,22 +5,31 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebAPISample.Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace WebAPISample.Controllers
 {
     public class MovieController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        public ApplicationDbContext context;
+
+        public MovieController()
         {
-            // Retrieve all movies from db logic
-            return new string[] { "movie1 string", "movie2 string" };
+            context = new ApplicationDbContext();
+        }
+
+        // GET api/values
+        public IEnumerable<Movie> Get()
+        {
+            var movies = context.Movies.ToList();
+            return movies;
         }
 
         // GET api/values/5
         public string Get(int id)
         {
-            // Retrieve movie by id from db logic
+            var movie = context.Movies.Where(a => a.MovieId == id).Single();
             return "value";
         }
 
