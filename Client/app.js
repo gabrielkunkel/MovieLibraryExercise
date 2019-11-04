@@ -52,7 +52,7 @@ var idForRecordToUpdate;
                 allData.forEach( item => {
                     let info = item.Title+item.DirectorName+item.Genre;
                     
-                    $('#results').append('<li id=\"m' + item.MovieId + '\">' + info + "</li>");
+                    $('#results').append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td>' + item.Title +'</td><td>' + item.DirectorName +'</td><td>' + item.Genre +'</td></tr>');
                 })
 
                 console.log("done populating");
@@ -71,6 +71,7 @@ var idForRecordToUpdate;
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
             }
+            
         }).done(function() {
             allData.forEach(function (item) {
                 $('\"#m' + item.MovieId + '\"').click(function () {
@@ -79,13 +80,52 @@ var idForRecordToUpdate;
                     $('#genre-input').val(d.Title);
                  });
             });
-        });
+        }); 
 
         e.preventDefault();
     }
 
     $('#my-form2').submit( processForm2 );
 })(jQuery);
+
+
+
+//////////// make update form with placeholders
+
+(function($){
+    function getUpdateForm( e ){
+        debugger;
+        let tempId = $;
+
+        $.ajax({
+            url: 'https://localhost:44352/api/movie',
+            dataType: 'json',
+            type: 'get',
+            contentType: 'application/json',
+            
+            success: function( data, textStatus, jQxhr ){
+                debugger;
+                console.log("success?");
+                console.log(data)
+                $('#response pre').html( data );
+
+                let selected = data.filter( item => item.MovieId = tempId)
+
+                console.log(selected);
+                
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
+    }
+
+    $('.movieList').click( getUpdateForm );
+})(jQuery);
+
+
 
 }
 
