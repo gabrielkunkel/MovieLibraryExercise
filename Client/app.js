@@ -1,8 +1,10 @@
 (function($){
     function processForm( e ){
+        debugger;
         var dict = {
         	Title : this["title"].value,
-        	Director: this["director"].value
+            DirectorName: this["director"].value,
+            Genre: this["genre"].value
         };
 
         $.ajax({
@@ -12,6 +14,7 @@
             contentType: 'application/json',
             data: JSON.stringify(dict),
             success: function( data, textStatus, jQxhr ){
+                console.log("success?");
                 $('#response pre').html( data );
             },
             error: function( jqXhr, textStatus, errorThrown ){
