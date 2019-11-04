@@ -27,3 +27,37 @@
 
     $('#my-form').submit( processForm );
 })(jQuery);
+
+
+(function($){
+    function processForm2( e ){
+        
+     
+        $.ajax({
+            url: 'https://localhost:44352/api/movie',
+            dataType: 'json',
+            type: 'get',
+            contentType: 'application/json',
+            
+            success: function( data, textStatus, jQxhr ){
+                console.log("success?");
+                console.log(data);
+                data.map( d => {
+                    let info = d.Title+d.DirectorName+d.Genre;
+                    $('#results').append("<li>"+info+"</li>");
+                })
+               // $('#response pre').html( data );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
+    }
+
+    $('#my-form2').submit( processForm2 );
+})(jQuery);
+
+
+
