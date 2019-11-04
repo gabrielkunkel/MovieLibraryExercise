@@ -33,9 +33,14 @@ var idForRecordToUpdate;
 })(jQuery);
 
 
+
+
+
+
 (function($){
     function processForm2( e ){
-        
+        $('#results').html('');
+        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td></tr>')
      
         $.ajax({
             url: 'https://localhost:44352/api/movie',
