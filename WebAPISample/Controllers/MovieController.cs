@@ -16,7 +16,7 @@ namespace WebAPISample.Controllers
 
         public MovieController()
         {
-            context = new ApplicationDbContext();
+            context = ApplicationDbContext.Create();
         }
 
         // GET api/values
