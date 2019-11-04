@@ -70,13 +70,19 @@ namespace WebAPISample.Controllers
         }
 
         // PUT api/values/5
-        public async Task<IHttpActionResult> Put(int id, [FromBody]Movie value)
+        public async Task<IHttpActionResult> Put([FromBody]Movie value)
         {
             try
             {
-                var movie = await Task.Run(() => context.Movies.Attach(value));
+                var movieToUpdate = context.Movies.Find(value.MovieId);
 
-                return Ok(value);
+                movieToUpdate.DirectorName = value.DirectorName ?? movieToUpdate.DirectorName;
+                movieToUpdate.Title = value.Title ?? movieToUpdate.Title;
+                movieToUpdate.Genre = value.Genre ?? movieToUpdate.Genre;
+
+                var movie = await context.SaveChangesAsync();
+
+                return Ok(movie);
             }
             catch (Exception ex)
             {
