@@ -4,15 +4,15 @@ html{
 }
 
 body{
-    background-image: linear-gradient(rgb(0, 0, 0), rgb(88, 99, 255));
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(88, 99, 255),rgb(0, 0, 0));
     color: white;
     background-repeat: no-repeat;
     min-height: 100%;
     color: rgb(255, 208, 0);
 }
 
-h1 {
-    text-align: center;
+.title {
+    text-align: left;
     font-family: Impact, Charcoal, sans-serif;
     font-size: 48pt;
     -webkit-text-stroke: 1px rgb(255, 208, 0);
@@ -24,9 +24,21 @@ h1 {
        -1px 1px 0 #000,
         1px 1px 0 #000;
 
-        border: 2pt solid  rgb(255, 208, 0);
+        
+ }
+#FormNav{
+    border: 2pt solid  rgb(255, 208, 0);
+    text-align: left;
+    
+}
+ #FormOptions{
+     
+     float: right;
  }
 
+ #search-form{
+     padding-top: 25px;
+ }
  .container{
      text-align: left;
  }

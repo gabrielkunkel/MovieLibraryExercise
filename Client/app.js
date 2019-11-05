@@ -182,7 +182,7 @@ var idForRecordToUpdate;
         e.preventDefault();
     }
 
-    $('#my-form2').submit( processForm2 );
+    $(document).ready( processForm2 );
 })(jQuery);
 
 
