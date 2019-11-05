@@ -12,7 +12,7 @@
 <body>
 
 
-    <div id="FormNav" class="row">
+    <div id="NavBarWrap" class="row">
         <div class="col-md-6">
             <span class="title">MOVIE COLLECTION!</span>
         </div>
@@ -38,7 +38,7 @@
 
     </div>
 
-    <div id="bigContainer">
+    <div id="bodyContainer">
         <div id="tableWrapper">
             <table id="results-header">
                 <tr>
@@ -69,19 +69,21 @@
 
     <div id="formsSticky">
 
-        <h2>Create a Record</h2>
-        <form id="my-form">
-            <input id="formOneInput1" type="text" name="title" placeholder="Title" />
-            <input id="formOneInput2" type="text" name="director" placeholder="Director" />
-            <input id="formOneInput3" type="text" name="genre" placeholder="Genre" />
-            <input id="formOneInput4" type="text" name="image" placeholder="ImageUrl" />
+        <div id="createPop">
+            <h2>Create a Record</h2>
+            <form id="my-form">
+                <input id="formOneInput1" type="text" name="title" placeholder="Title" />
+                <input id="formOneInput2" type="text" name="director" placeholder="Director" />
+                <input id="formOneInput3" type="text" name="genre" placeholder="Genre" />
+                <input id="formOneInput4" type="text" name="image" placeholder="ImageUrl" />
 
-            <button type="submit">Create</button>
-        </form>
+                <button type="submit">Create</button>
+            </form>
+        </div>
 
 
 
-        <div id="updatePop">
+        <div id="updatePop" style="display: none;">
             <h2>Update Record</h2> (first Get All Records, then click on the record you want to update)
             <form id="update-form">
                 <input type="hidden" id="id-input" name="MovieId">

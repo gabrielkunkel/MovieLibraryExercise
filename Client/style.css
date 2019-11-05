@@ -27,7 +27,7 @@ body{
 
         
  }
-#FormNav{
+#NavBarWrap{
     border: 2pt solid  rgb(255, 208, 0);
     text-align: left;
     
@@ -118,6 +118,7 @@ body{
 }
 
 #formsSticky{
+    height: 35%;
     width: 100%;
     border: 1pt solid white;
     padding-bottom: 10%;
@@ -126,18 +127,20 @@ body{
     padding-left: 2%;
     
     text-align: left;
+   
+
 }
 
-#bigContainer{
-   
+#bodyContainer{
+   max-height: 60%;
     
 }
 
 #scroller{
     float: left;
-    height: 50%;
+    max-height: 400px;
     width: 100%;
-    overflow-y: scroll;
+    overflow: auto;
 }
 
 

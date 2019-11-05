@@ -28,6 +28,7 @@
                         $('#genre-input').val(item.Genre);
                         $('#image-input').val(item.ImageUrl);
                         $('#id-input').val(item.MovieId);
+                        $('#updatePop').show();
                     })
                     .on("mouseover", '#m' + item.MovieId, function () {
                         $("#displayImage").html("");
@@ -100,6 +101,7 @@
                                 $('#genre-input').val(item.Genre);
                                 $('#image-input').val(item.ImageUrl);
                                 $('#id-input').val(item.MovieId);
+                                $('#updatePop').show();
                             })
                             .on("mouseover", '#m' + item.MovieId, function () {
                                 $("#displayImage").html("");
@@ -155,6 +157,7 @@
                                 $('#genre-input').val(item.Genre);
                                 $('#image-input').val(item.ImageUrl);
                                 $('#id-input').val(item.MovieId);
+                                $('#updatePop').show();
                             })
                             .on("mouseover", '#m' + item.MovieId, function () {
                                 $("#displayImage").html("");
@@ -211,10 +214,15 @@
                 data: JSON.stringify(dict),
                 success: function (data, textStatus, jQxhr) {
                     console.log("success?");
+                    $('#updatePop').hide();
+
+
                     $('#title-input').val('');
                     $('#director-input').val('');
                     $('#genre-input').val('');
                     $('#image-input').val('');
+
+
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
                     console.log(errorThrown);
@@ -251,6 +259,7 @@
                                 $('#genre-input').val(item.Genre);
                                 $('#image-input').val(item.ImageUrl);
                                 $('#id-input').val(item.MovieId);
+                                $('#updatePop').show();
                             })
                             .on("mouseover", '#m' + item.MovieId, function () {
                                 $("#displayImage").html("");
