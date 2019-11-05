@@ -158,7 +158,7 @@ var idForRecordToUpdate;
                          })
                          .on("mouseover", '#m' + item.MovieId, function () {
                              $("#displayImage").html("");
-                             $("#displayImage").append('<img id =\"currentMovieImage\" src=\"'+item.ImageUrl+'\" alt=\"'+item.ImageUrl+'\" >');
+                             $("#displayImage").append('<img id =\"currentMovieImage\" src=\"'+item.ImageUrl+'\"  >');
                              //$("#displayImage").append('<h1>Hello</h1>');
                              
 

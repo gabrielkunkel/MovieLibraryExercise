@@ -79,6 +79,7 @@ body{
  #currentMovieImage{
     height: 200px;
     max-width: 200px;
+    box-shadow: 0 4px 8px 0 rgba(255, 196, 0, 0.541), 0 10px 20px 0 rgba(255, 255, 255, 0.377);
  }
 
  #displayImage{
@@ -86,7 +87,7 @@ body{
     height: 210px;
     width: 210px;
 
-    border: 1px solid white;
+    
     float:right;
     margin-right: 5%;
 }
