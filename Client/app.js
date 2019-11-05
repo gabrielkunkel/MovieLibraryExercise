@@ -11,7 +11,7 @@ var idForRecordToUpdate;
         let searchInputText = $("#search-input-text").val();
 
         // filter the relevant movies
-        allData = allData.filter( movie => {
+        let tempData = allData.filter( movie => {
             return movie[searchType].indexOf(searchInputText) !== -1
         });
 
@@ -20,7 +20,7 @@ var idForRecordToUpdate;
         // todo: refresh list with new allData
         $('#results').html('');
         $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>');
-        allData.forEach( item => {
+        tempData.forEach( item => {
                     
             $('#results')
                 .append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td>' + item.Title +'</td><td>' + item.DirectorName +'</td><td>' + item.Genre +'</td></tr>')
