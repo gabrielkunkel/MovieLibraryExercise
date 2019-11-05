@@ -35,8 +35,8 @@ h1 {
 
  #results{
      text-align: left;
-     min-width: 80%;
-     margin-right: 10%;
+     min-width: 60%;
+     margin-right: 1%;
      margin-left: 10%;
  }
 
@@ -66,19 +66,22 @@ h1 {
 
  #displayImage{
     
-    height: 200px;
-    width: 200px;
+    height: 210px;
+    width: 210px;
 
     border: 1px solid white;
     float:right;
+    margin-right: 5%;
 }
 
 #forms{
-    
+    width:50%;
+    float:left;
+    text-align: left;
 }
 
 #bigContainer{
-    float: left;
+    
     
 }
 
