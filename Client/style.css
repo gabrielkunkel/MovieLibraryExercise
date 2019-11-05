@@ -51,6 +51,7 @@ body{
  }
 
  #results{
+     float: left;
      text-align: left;
      min-width: 60%;
      margin-right: 1%;
@@ -83,7 +84,7 @@ body{
  }
 
  #displayImage{
-    
+    padding-top: 10px;
     height: 210px;
     width: 210px;
 
