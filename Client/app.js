@@ -29,21 +29,10 @@ var idForRecordToUpdate;
             }
         });
 
-        e.preventDefault();
-    }
+        // now update all records on main table?
 
-    $('#my-form').submit( processForm );
-})(jQuery);
-
-
-
-
-
-
-(function($){
-    function processForm2( e ){
         $('#results').html('');
-        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td></tr>')
+        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>')
      
         $.ajax({
             url: 'https://localhost:44352/api/movie',
@@ -60,7 +49,52 @@ var idForRecordToUpdate;
                 allData.forEach( item => {
                     let info = item.Title+item.DirectorName+item.Genre;
                     
-                    $('#results').append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td>' + item.Title +'</td><td>' + item.DirectorName +'</td><td>' + item.Genre +'</td></tr>');
+                    $('#results').append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td>' + item.Title +'</td><td>' + item.DirectorName +'</td><td>' + item.Genre +'</td><td><button type="button">EDIT</button></td></tr>');
+                })
+
+                console.log("done populating");
+
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        // end 
+
+
+        e.preventDefault();
+    }
+
+    $('#my-form').submit( processForm );
+})(jQuery);
+
+
+
+
+
+
+(function($){
+    function processForm2( e ){
+        $('#results').html('');
+        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>')
+     
+        $.ajax({
+            url: 'https://localhost:44352/api/movie',
+            dataType: 'json',
+            type: 'get',
+            contentType: 'application/json',
+            
+            success: function( data, textStatus, jQxhr ){
+                allData = data;
+
+                console.log("success?");
+                console.log(data);
+
+                allData.forEach( item => {
+                    let info = item.Title+item.DirectorName+item.Genre;
+                    
+                    $('#results').append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td>' + item.Title +'</td><td>' + item.DirectorName +'</td><td>' + item.Genre +'</td><td><button type="button">EDIT</button></td></tr>');
                 })
 
                 console.log("done populating");

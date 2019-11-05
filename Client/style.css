@@ -54,3 +54,7 @@ h1 {
      font-size: 16pt;
      text-shadow: 2px 2px black;
  }
+
+ button{
+     background-color: rgb(255, 208, 0);
+ }
