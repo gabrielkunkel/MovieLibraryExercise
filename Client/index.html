@@ -16,6 +16,15 @@
 <div id="bigContainer">
 <div id="forms">
 <!-- thinking we could make left floated sidebar for the forms later?-->
+<h2>Get All Records</h2>
+<form id="my-form2">
+    <!--<input type="text" name="title" placeholder="Title" />
+    <input type="text" name="director" placeholder="Director" />
+    <input type="text" name="genre" placeholder="Genre" />
+-->
+    <button id="ALL" type="submit">DISPLAY ALL MOVIES</button> 
+</form>
+
 <h2>Create a Record</h2>
 <form id="my-form">
     <input id="formOneInput1" type="text" name="title" placeholder="Title" />
@@ -26,13 +35,19 @@
     <button type="submit">Create</button>
 </form>
 
-<h2>Get All Records</h2>
-<form id="my-form2">
-    <!--<input type="text" name="title" placeholder="Title" />
-    <input type="text" name="director" placeholder="Director" />
-    <input type="text" name="genre" placeholder="Genre" />
--->
-    <button id="ALL" type="submit">DISPLAY ALL MOVIES</button> 
+<h2>Search List</h2>
+<form id="search-form">
+
+    <label>Pick To Search</label>
+        <select id = "search-type-list">
+          <option value = "Title">Title</option>
+          <option value = "Director">DirectorName</option>
+          <option value = "Genre">Genre</option>
+        </select>
+
+    <input id="search-input-text" type="text" name="search-input-text" placeholder="Search" />
+    
+    <button type="submit">Create</button>
 </form>
 
 <div id="updatePop">

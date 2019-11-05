@@ -2,9 +2,54 @@
 var allData;
 var idForRecordToUpdate;
 
+(function($) {
+
+    function searchForm(e) {
+        
+        // get the values from the searchFrom
+        let searchType = $("#search-type-list option:selected").text();
+        let searchInputText = $("#search-input-text").val();
+
+        // filter the relevant movies
+        allData = allData.filter( movie => {
+            return movie[searchType].indexOf(searchInputText) !== -1
+        });
+
+        console.log(allData);
+
+        // todo: refresh list with new allData
+        $('#results').html('');
+        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>');
+        allData.forEach( item => {
+                    
+            $('#results')
+                .append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td>' + item.Title +'</td><td>' + item.DirectorName +'</td><td>' + item.Genre +'</td></tr>')
+                .on("click", '#m' + item.MovieId, function () {
+                    $('#title-input').val(item.Title);
+                    $('#director-input').val(item.DirectorName);
+                    $('#genre-input').val(item.Genre);
+                    $('#image-input').val(item.ImageUrl);
+                    $('#id-input').val(item.MovieId);
+                 })
+                 .on("mouseover", '#m' + item.MovieId, function () {
+                     $("#displayImage").html("");
+                     $("#displayImage").append('<img id =\"currentMovieImage\" src=\"'+item.ImageUrl+'\" alt=\"'+item.ImageUrl+'\" >');                    
+                 })
+                 .on("mouseout", '#m' + item.MovieId, function () {
+                    $("#displayImage").html("");
+                 });
+        });
+
+        e.preventDefault();
+    } // end of searchForm
+
+    $('#search-form').submit( searchForm );
+})(jQuery);
+
+
+
 (function($){
     function processForm( e ){
-        debugger;
         var dict = {
         	Title : this["title"].value,
             DirectorName: this["director"].value,
@@ -34,7 +79,7 @@ var idForRecordToUpdate;
         // now update all records on main table?
 
         $('#results').html('');
-        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>')
+        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>');
      
         $.ajax({
             url: 'https://localhost:44352/api/movie',
@@ -44,9 +89,6 @@ var idForRecordToUpdate;
             
             success: function( data, textStatus, jQxhr ){
                 allData = data;
-
-                console.log("success?");
-                console.log(data);
 
                 allData.forEach( item => {
                     
@@ -61,17 +103,13 @@ var idForRecordToUpdate;
                          })
                          .on("mouseover", '#m' + item.MovieId, function () {
                              $("#displayImage").html("");
-                             $("#displayImage").append('<img id =\"currentMovieImage\" src=\"'+item.ImageUrl+'\" alt=\"'+item.ImageUrl+'\" >');
-                             //$("#displayImage").append('<h1>Hello</h1>');
-                             
-
-                            
+                             $("#displayImage").append('<img id =\"currentMovieImage\" src=\"'+item.ImageUrl+'\" alt=\"'+item.ImageUrl+'\" >');                             
                          })
                          .on("mouseout", '#m' + item.MovieId, function () {
                             $("#displayImage").html("");
                          });
 
-                })
+                });
 
                 console.log("done populating");
 
@@ -81,8 +119,7 @@ var idForRecordToUpdate;
             }
             
         }) 
-        // end 
-
+        // end of Ajax call
 
         e.preventDefault();
     }
@@ -246,6 +283,9 @@ var idForRecordToUpdate;
 
     $('#update-form').submit( putForm );
 })(jQuery);
+
+
+
 
 
 }
