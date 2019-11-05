@@ -70,10 +70,6 @@ var idForRecordToUpdate;
 })(jQuery);
 
 
-
-
-
-
 (function($){
     function processForm2( e ){
         $('#results').html('');
@@ -99,6 +95,7 @@ var idForRecordToUpdate;
                             $('#title-input').val(item.Title);
                             $('#director-input').val(item.DirectorName);
                             $('#genre-input').val(item.Genre);
+                            $('#id-input').val(item.MovieId);
                          });
                 })
 
@@ -154,6 +151,38 @@ var idForRecordToUpdate;
     $('.movieList').click( getUpdateForm );
 })(jQuery);
 
+
+(function($){
+    function putForm( e ){
+        var dict = {
+        	Title : this["title"].value,
+            DirectorName: this["director"].value,
+            Genre: this["genre"].value,
+            MovieId: this["MovieId"].value
+        };
+
+        $.ajax({
+            url: 'https://localhost:44352/api/movie',
+            dataType: 'json',
+            type: 'put',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function( data, textStatus, jQxhr ){
+                console.log("success?");
+                $('#title-input').val('');
+                $('#director-input').val('');
+                $('#genre-input').val('');
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
+    }
+
+    $('#update-form').submit( putForm );
+})(jQuery);
 
 
 }
