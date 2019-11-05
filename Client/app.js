@@ -15,8 +15,6 @@ var idForRecordToUpdate;
             return movie[searchType].indexOf(searchInputText) !== -1
         });
 
-        console.log(allData);
-
         // todo: refresh list with new allData
         $('#results').html('');
         $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>');
@@ -39,6 +37,8 @@ var idForRecordToUpdate;
                     $("#displayImage").html("");
                  });
         });
+
+        $("#ALL").show();
 
         e.preventDefault();
     } // end of searchForm
@@ -183,6 +183,7 @@ var idForRecordToUpdate;
     }
 
     $(document).ready( processForm2 );
+    $("#ALL").hide();
 })(jQuery);
 
 
