@@ -23,7 +23,7 @@ h1 {
  }
 
  .container{
-     background-color:  rgb(255, 208, 0);
+     text-align: left;
  }
 
  .movieList:hover{
@@ -53,4 +53,12 @@ h1 {
      font-weight: bold;
      font-size: 16pt;
      text-shadow: 2px 2px black;
+ }
+
+ button{
+     background-color: rgb(255, 208, 0);
+ }
+
+ #updatePop{
+     display: none;
  }

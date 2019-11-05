@@ -13,9 +13,9 @@
     <pre></pre>
 </div>
 
-
+<div id="forms" class="container">
 <!-- thinking we could make left floated sidebar for the forms later?-->
-Create a Record
+<h2>Create a Record</h2>
 <form id="my-form">
     <input id="formOneInput1" type="text" name="title" placeholder="Title" />
     <input id="formOneInput2" type="text" name="director" placeholder="Director" />
@@ -24,16 +24,17 @@ Create a Record
     <button type="submit">Create</button>
 </form>
 
-Get All Records
+<h2>Get All Records</h2>
 <form id="my-form2">
-    <input type="text" name="title" placeholder="Title" />
+    <!--<input type="text" name="title" placeholder="Title" />
     <input type="text" name="director" placeholder="Director" />
     <input type="text" name="genre" placeholder="Genre" />
-
-    <button id="ALL" type="submit">Get all</button>
+-->
+    <button id="ALL" type="submit">DISPLAY ALL MOVIES</button> 
 </form>
 
-Update Record (first Get All Records, then click on the record you want to update)
+<div id="updatePop">
+<h2>Update Record</h2> (first Get All Records, then click on the record you want to update)
 <form id="update-form">
     <input id="title-input" type="text" name="title" placeholder="Title" />
     <input id="director-input" type="text" name="director" placeholder="Director" />
@@ -41,6 +42,8 @@ Update Record (first Get All Records, then click on the record you want to updat
 
     <button type="submit">Update</button>
 </form>
+</div>
+</div>
 
 
 <table id = "results">
@@ -51,10 +54,7 @@ Update Record (first Get All Records, then click on the record you want to updat
     </tr>
 </table>
 
-<div class = "container">
-    <p> come content here </p>
 
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
