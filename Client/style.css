@@ -59,4 +59,11 @@ h1 {
      background-color: rgb(255, 208, 0);
  }
 
+ #currentMovieImage{
+     height: 200px;
+ }
+
+ #displayImage{
+    height: 200px;
+}
  

@@ -8,7 +8,8 @@ var idForRecordToUpdate;
         var dict = {
         	Title : this["title"].value,
             DirectorName: this["director"].value,
-            Genre: this["genre"].value
+            Genre: this["genre"].value,
+            ImageUrl: this["image"].value
         };
 
         $.ajax({
@@ -23,6 +24,7 @@ var idForRecordToUpdate;
                 $('#formOneInput1').val('');
                 $('#formOneInput2').val('');
                 $('#formOneInput3').val('');
+                $('#formOneInput4').val('');
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
@@ -32,7 +34,7 @@ var idForRecordToUpdate;
         // now update all records on main table?
 
         $('#results').html('');
-        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>')
+        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td></tr>')
      
         $.ajax({
             url: 'https://localhost:44352/api/movie',
@@ -49,7 +51,7 @@ var idForRecordToUpdate;
                 allData.forEach( item => {
                     let info = item.Title+item.DirectorName+item.Genre;
                     
-                    $('#results').append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td>' + item.Title +'</td><td>' + item.DirectorName +'</td><td>' + item.Genre +'</td><td><button type="button">EDIT</button></td></tr>');
+                    $('#results').append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td>' + item.Title +'</td><td>' + item.DirectorName +'</td><td>' + item.Genre +'</td></tr>');
                 })
 
                 console.log("done populating");
@@ -95,8 +97,21 @@ var idForRecordToUpdate;
                             $('#title-input').val(item.Title);
                             $('#director-input').val(item.DirectorName);
                             $('#genre-input').val(item.Genre);
+                            $('#image-input').val(item.ImageUrl);
                             $('#id-input').val(item.MovieId);
+                         })
+                         .on("mouseover", '#m' + item.MovieId, function () {
+                             $("#displayImage").html("");
+                             $("#displayImage").append('<img id =\"currentMovieImage\" src=\"'+item.ImageUrl+'\" alt=\"'+item.ImageUrl+'\" >');
+                             //$("#displayImage").append('<h1>Hello</h1>');
+                             
+
+                            
+                         })
+                         .on("mouseout", '#m' + item.MovieId, function () {
+                            $("#displayImage").html("");
                          });
+
                 })
 
                 console.log("done populating");
@@ -118,38 +133,7 @@ var idForRecordToUpdate;
 
 //////////// make update form with placeholders
 
-(function($){
-    function getUpdateForm( e ){
-        debugger;
-        let tempId = $;
 
-        $.ajax({
-            url: 'https://localhost:44352/api/movie',
-            dataType: 'json',
-            type: 'get',
-            contentType: 'application/json',
-            
-            success: function( data, textStatus, jQxhr ){
-                debugger;
-                console.log("success?");
-                console.log(data)
-                $('#response pre').html( data );
-
-                let selected = data.filter( item => item.MovieId = tempId)
-
-                console.log(selected);
-                
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
-            }
-        });
-
-        e.preventDefault();
-    }
-
-    $('.movieList').click( getUpdateForm );
-})(jQuery);
 
 
 (function($){
@@ -158,7 +142,8 @@ var idForRecordToUpdate;
         	Title : this["title"].value,
             DirectorName: this["director"].value,
             Genre: this["genre"].value,
-            MovieId: this["MovieId"].value
+            MovieId: this["MovieId"].value,
+            ImageUrl: this["image"].value
         };
 
         $.ajax({
@@ -172,11 +157,50 @@ var idForRecordToUpdate;
                 $('#title-input').val('');
                 $('#director-input').val('');
                 $('#genre-input').val('');
+                $('#image-input').val('');
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
             }
         });
+
+        // start
+
+        
+        // now update all records on main table?
+
+        $('#results').html('');
+        $('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td></tr>')
+     
+        $.ajax({
+            url: 'https://localhost:44352/api/movie',
+            dataType: 'json',
+            type: 'get',
+            contentType: 'application/json',
+            
+            success: function( data, textStatus, jQxhr ){
+                allData = data;
+
+                console.log("success?");
+                console.log(data);
+
+                allData.forEach( item => {
+                    let info = item.Title+item.DirectorName+item.Genre;
+                    
+                    $('#results').append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td>' + item.Title +'</td><td>' + item.DirectorName +'</td><td>' + item.Genre +'</td></tr>');
+                })
+
+                console.log("done populating");
+
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        // end 
+
+        // end
 
         e.preventDefault();
     }
@@ -186,4 +210,5 @@ var idForRecordToUpdate;
 
 
 }
+
 

@@ -16,5 +16,7 @@ namespace WebAPISample.Models
         public string DirectorName { get; set; }
 
         public string Genre { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

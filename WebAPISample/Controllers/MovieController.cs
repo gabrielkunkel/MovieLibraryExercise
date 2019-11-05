@@ -79,6 +79,7 @@ namespace WebAPISample.Controllers
                 movieToUpdate.DirectorName = value.DirectorName ?? movieToUpdate.DirectorName;
                 movieToUpdate.Title = value.Title ?? movieToUpdate.Title;
                 movieToUpdate.Genre = value.Genre ?? movieToUpdate.Genre;
+                movieToUpdate.ImageUrl = value.ImageUrl ?? movieToUpdate.ImageUrl;
 
                 var movie = await context.SaveChangesAsync();
 

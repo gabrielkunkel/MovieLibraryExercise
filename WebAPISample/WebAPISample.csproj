@@ -234,6 +234,10 @@
     <Compile Include="Migrations\201911041722321_init3.Designer.cs">
       <DependentUpon>201911041722321_init3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911051649500_imagesUrladded.cs" />
+    <Compile Include="Migrations\201911051649500_imagesUrladded.Designer.cs">
+      <DependentUpon>201911051649500_imagesUrladded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911041722321_init3.resx">
       <DependentUpon>201911041722321_init3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911051649500_imagesUrladded.resx">
+      <DependentUpon>201911051649500_imagesUrladded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
