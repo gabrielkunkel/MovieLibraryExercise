@@ -1,52 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>jQuery AJAX POST Form</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
 
 
-    <div id="FormNav"class = "row">
-        <div class = "col-md-6">
-                <span class="title">MOVIE COLLECTION!</span>
+    <div id="FormNav" class="row">
+        <div class="col-md-6">
+            <span class="title">MOVIE COLLECTION!</span>
         </div>
-        <div class = "col-md-6 ">
-                <form id="search-form">
+        <div class="col-md-6 ">
+            <form id="search-form">
 
-                        <label>Pick To Search</label>
-                            <select id = "search-type-list">
-                              <option value = "Title">Title</option>
-                              <option value = "Director">DirectorName</option>
-                              <option value = "Genre">Genre</option>
-                            </select>
-                    
-                        <input id="search-input-text" type="text" name="search-input-text" placeholder="Search" />
-                        
-                        <button type="submit">Search</button>
-                    </form>
-                    <form id="my-form2"> 
-                            <button id="ALL" type="submit">DISPLAY ALL MOVIES</button> 
-                        </form>
+                <label>Pick To Search</label>
+                <select id="search-type-list">
+                    <option value="Title">Title</option>
+                    <option value="Director">DirectorName</option>
+                    <option value="Genre">Genre</option>
+                </select>
+
+                <input id="search-input-text" type="text" name="search-input-text" placeholder="Search" />
+
+                <button type="submit">Search</button>
+            </form>
+            <form id="my-form2">
+                <button id="ALL" type="submit">DISPLAY ALL MOVIES</button>
+            </form>
         </div>
-      
+
 
     </div>
 
     <div id="bigContainer">
-        <div id="scroller">
-            <table id = "results">
+        <div id="tableWrapper">
+            <table id="results-header">
                 <tr>
                     <td class="tableHead">Title</td>
                     <td class="tableHead">Director</td>
                     <td class="tableHead">Genre</td>
                 </tr>
             </table>
+            <div id="scroller">
+                <table id="results">
+                    <tr>
+                        <td class="tableHead">Title</td>
+                        <td class="tableHead">Director</td>
+                        <td class="tableHead">Genre</td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div id="displayImage">
-            <img id="currentMovieImage" >
+            <img id="currentMovieImage">
         </div>
     </div>
 
@@ -55,33 +67,33 @@
 
 
 
-<div id="forms">
+    <div id="formsSticky">
 
-    <h2>Create a Record</h2>
-    <form id="my-form">
-        <input id="formOneInput1" type="text" name="title" placeholder="Title" />
-        <input id="formOneInput2" type="text" name="director" placeholder="Director" />
-        <input id="formOneInput3" type="text" name="genre" placeholder="Genre" />
-        <input id="formOneInput4" type="text" name="image" placeholder="ImageUrl" />
+        <h2>Create a Record</h2>
+        <form id="my-form">
+            <input id="formOneInput1" type="text" name="title" placeholder="Title" />
+            <input id="formOneInput2" type="text" name="director" placeholder="Director" />
+            <input id="formOneInput3" type="text" name="genre" placeholder="Genre" />
+            <input id="formOneInput4" type="text" name="image" placeholder="ImageUrl" />
 
-        <button type="submit">Create</button>
-    </form>
-
-
-
-    <div id="updatePop">
-        <h2>Update Record</h2> (first Get All Records, then click on the record you want to update)
-        <form id="update-form">
-            <input type="hidden" id="id-input" name="MovieId">
-            <input id="title-input" type="text" name="title" placeholder="Title" />
-            <input id="director-input" type="text" name="director" placeholder="Director" />
-            <input id="genre-input" type="text" name="genre" placeholder="Genre" />
-            <input id="image-input" type="text" name="image" placeholder="Image URL" />
-
-            <button type="submit">Update</button>
+            <button type="submit">Create</button>
         </form>
+
+
+
+        <div id="updatePop">
+            <h2>Update Record</h2> (first Get All Records, then click on the record you want to update)
+            <form id="update-form">
+                <input type="hidden" id="id-input" name="MovieId">
+                <input id="title-input" type="text" name="title" placeholder="Title" />
+                <input id="director-input" type="text" name="director" placeholder="Director" />
+                <input id="genre-input" type="text" name="genre" placeholder="Genre" />
+                <input id="image-input" type="text" name="image" placeholder="Image URL" />
+
+                <button type="submit">Update</button>
+            </form>
+        </div>
     </div>
-</div>
 
 
 
@@ -90,7 +102,8 @@
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="./app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
 </body>
+
 </html>

@@ -51,12 +51,30 @@ body{
      text-shadow: 2px 2px black;
  }
 
+
+ #results-header{
+    
+    text-align: left;
+    width: 100%;
+    margin-right: 1%;
+    margin-left: 2%;
+
+    font-size: 16pt;
+    text-shadow: 2px 2px black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.295);
+}
+
  #results{
-     float: left;
+     
      text-align: left;
-     min-width: 60%;
+     width: 100%;
      margin-right: 1%;
      margin-left: 2%;
+ }
+
+ td{
+     width:33%;
  }
 
  body{
@@ -68,10 +86,14 @@ body{
      color: white;
  }
 
+ #tableWrapper{
+     width: 60%;
+ }
  .tableHead{
      font-weight: bold;
      font-size: 16pt;
      text-shadow: 2px 2px black;
+     border: 1pt rgb(255, 208, 0);
  }
 
  button{
@@ -79,25 +101,30 @@ body{
  }
 
  #currentMovieImage{
-    height: 200px;
-    max-width: 200px;
+    position: relative;
+    max-height: 90%;
+    max-width: 90%;
     box-shadow: 0 4px 8px 0 rgba(255, 196, 0, 0.541), 0 10px 20px 0 rgba(255, 255, 255, 0.377);
  }
 
  #displayImage{
     padding-top: 10px;
-    height: 210px;
-    width: 210px;
+    height: 400px;
+    width: 300px;
 
     
     float:right;
     margin-right: 5%;
 }
 
-#forms{
-    margin-left: 2%;
-    width:50%;
-    float:left;
+#formsSticky{
+    width: 100%;
+    border: 1pt solid white;
+    padding-bottom: 10%;
+    position: absolute;
+    bottom: 0;
+    padding-left: 2%;
+    
     text-align: left;
 }
 
@@ -107,7 +134,9 @@ body{
 }
 
 #scroller{
-    height: 200px;
+    float: left;
+    height: 50%;
+    width: 100%;
     overflow-y: scroll;
 }
 
