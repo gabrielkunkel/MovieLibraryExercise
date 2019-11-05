@@ -60,10 +60,27 @@ h1 {
  }
 
  #currentMovieImage{
-     height: 200px;
+    height: 200px;
+    max-width: 200px;
  }
 
  #displayImage{
+    
     height: 200px;
+    width: 200px;
+
+    border: 1px solid white;
+    float:right;
 }
+
+#forms{
+    
+}
+
+#bigContainer{
+    float: left;
+    
+}
+
+
  
