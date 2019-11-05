@@ -36,18 +36,19 @@
     </div>
 
     <div id="bigContainer">
-    <table id = "results">
-            <tr>
-                <td class="tableHead">Title</td>
-                <td class="tableHead">Director</td>
-                <td class="tableHead">Genre</td>
-            </tr>
-        </table>
-
+        <div id="scroller">
+            <table id = "results">
+                <tr>
+                    <td class="tableHead">Title</td>
+                    <td class="tableHead">Director</td>
+                    <td class="tableHead">Genre</td>
+                </tr>
+            </table>
+        </div>
         <div id="displayImage">
-                <img id="currentMovieImage" >
-                </div>
-            </div>
+            <img id="currentMovieImage" >
+        </div>
+    </div>
 
 
 
@@ -56,32 +57,30 @@
 
 <div id="forms">
 
+    <h2>Create a Record</h2>
+    <form id="my-form">
+        <input id="formOneInput1" type="text" name="title" placeholder="Title" />
+        <input id="formOneInput2" type="text" name="director" placeholder="Director" />
+        <input id="formOneInput3" type="text" name="genre" placeholder="Genre" />
+        <input id="formOneInput4" type="text" name="image" placeholder="ImageUrl" />
 
-
-<h2>Create a Record</h2>
-<form id="my-form">
-    <input id="formOneInput1" type="text" name="title" placeholder="Title" />
-    <input id="formOneInput2" type="text" name="director" placeholder="Director" />
-    <input id="formOneInput3" type="text" name="genre" placeholder="Genre" />
-    <input id="formOneInput4" type="text" name="image" placeholder="ImageUrl" />
-
-    <button type="submit">Create</button>
-</form>
+        <button type="submit">Create</button>
+    </form>
 
 
 
-<div id="updatePop">
-<h2>Update Record</h2> (first Get All Records, then click on the record you want to update)
-<form id="update-form">
-    <input type="hidden" id="id-input" name="MovieId">
-    <input id="title-input" type="text" name="title" placeholder="Title" />
-    <input id="director-input" type="text" name="director" placeholder="Director" />
-    <input id="genre-input" type="text" name="genre" placeholder="Genre" />
-    <input id="image-input" type="text" name="image" placeholder="Image URL" />
+    <div id="updatePop">
+        <h2>Update Record</h2> (first Get All Records, then click on the record you want to update)
+        <form id="update-form">
+            <input type="hidden" id="id-input" name="MovieId">
+            <input id="title-input" type="text" name="title" placeholder="Title" />
+            <input id="director-input" type="text" name="director" placeholder="Director" />
+            <input id="genre-input" type="text" name="genre" placeholder="Genre" />
+            <input id="image-input" type="text" name="image" placeholder="Image URL" />
 
-    <button type="submit">Update</button>
-</form>
-</div>
+            <button type="submit">Update</button>
+        </form>
+    </div>
 </div>
 
 
