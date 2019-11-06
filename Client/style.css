@@ -28,11 +28,17 @@ body{
         
  }
 #NavBarWrap{
-    
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
     padding-left: 2%;
-    border: 2pt solid  rgb(255, 208, 0);
+    border-top:  2pt solid  rgb(255, 208, 0);
+    border-bottom:  2pt solid  rgb(255, 208, 0);
     text-align: left;
     
+}
+.row{
+    margin-right: 0;
 }
  #FormOptions{
      
