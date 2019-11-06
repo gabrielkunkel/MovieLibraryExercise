@@ -83,6 +83,12 @@ body{
     padding-right: 12px;
 }
 
+.note{
+    font-style: italic;
+    font-size: 12pt;
+    color: rgba(255, 255, 255, 0.267);
+}
+
  td{
      width:33%;
  }
