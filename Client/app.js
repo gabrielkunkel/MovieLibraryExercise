@@ -136,7 +136,10 @@
                     console.log(errorThrown);
                 }
             })
-            e.preventDefault();
+            if (e) {
+                e.preventDefault();
+            }
+
         }
 
         $(document).ready(GetAllMovies);
@@ -176,6 +179,45 @@
             e.preventDefault();
             GetAllMovies();
         }
+
+
+        ////////////////////// REMOVE MOVIE FROM DATABASE ///////////
+
+        function deleteMovie(idToBeDeleted) {
+
+
+            let deleteurl = 'https://localhost:44352/api/movie/' + idToBeDeleted;
+
+            $.ajax({
+                url: deleteurl,
+                type: 'DELETE',
+                success: function (result) {
+
+                    console.log("deleted?");
+
+                    $('#updatePop').hide();
+                    GetAllMovies();
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+
+                }
+            });
+
+
+            GetAllMovies();
+        }
+
+
+        $('#deleteBtn').click(() => {
+
+            let toDelete = $('#id-input').val();
+            deleteMovie(toDelete);
+        });
+
+        //// EVENT HANDLERS
+
+
 
         $('#update-form').submit(putForm);
 

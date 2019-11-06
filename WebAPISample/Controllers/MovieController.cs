@@ -92,9 +92,19 @@ namespace WebAPISample.Controllers
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
             // Delete movie from db logic
+            try
+            {
+                context.Movies.Remove(context.Movies.FirstOrDefault(h => h.MovieId == id));
+                var movie = await context.SaveChangesAsync();
+                return Ok(movie);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
     }
 
