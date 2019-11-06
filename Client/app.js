@@ -65,6 +65,8 @@
                 contentType: 'application/json',
                 data: JSON.stringify(dict),
                 success: function (data, textStatus, jQxhr) {
+
+                    $("#createPop").hide();
                     console.log("success?");
                     $('#response pre').html(data);
                     $('#formOneInput1').val('');
@@ -295,9 +297,18 @@
     })(jQuery);
 
 
+    ////// show creat button
+    $("#showCreate").click(function () {
+        $('#updatePop').hide();
+        $("#createPop").toggle();
+    });
 
+    // in several spots... $("#createPop").hide()... should be added;
+    /////
 
 
 }
+
+
 
 
