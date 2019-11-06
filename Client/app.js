@@ -75,6 +75,7 @@
                     $('#formOneInput2').val('');
                     $('#formOneInput3').val('');
                     $('#formOneInput4').val('');
+                    GetAllMovies();
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
                     console.log(errorThrown);
@@ -82,7 +83,7 @@
             });
             e.preventDefault();
 
-            GetAllMovies();
+
         }
 
         $('#my-form').submit(postMovie);
@@ -92,7 +93,7 @@
 
 
         function GetAllMovies(e) {
-            $('#results').html('');
+
             $.ajax({
                 url: 'https://localhost:44352/api/movie',
                 dataType: 'json',
@@ -105,32 +106,8 @@
                     console.log("success?");
                     console.log(data);
 
-                    allData.forEach(item => {
+                    DisplayMovies(allData);
 
-                        $('#results')
-                            .append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td><i>' + item.Title + '</i></td><td>' + item.DirectorName + '</td><td>' + item.Genre + '</td></tr>')
-                            .on("click", '#m' + item.MovieId, function () {
-                                $('#title-input').val(item.Title);
-                                $('#director-input').val(item.DirectorName);
-                                $('#genre-input').val(item.Genre);
-                                $('#image-input').val(item.ImageUrl);
-                                $('#id-input').val(item.MovieId);
-                                $('#createPop').hide();
-                                //$('#updatePop').show();
-                                $("#updatePop").slideDown("fast", function () {
-                                    // Animation complete.
-                                });
-                            })
-                            .on("mouseover", '#m' + item.MovieId, function () {
-                                $("#displayImage").html("");
-                                $("#displayImage").append('<img id =\"currentMovieImage\" src=\"' + item.ImageUrl + '\"  >');
-                                //$("#displayImage").append('<h1>Hello</h1>');
-                            })
-                            .on("mouseout", '#m' + item.MovieId, function () {
-                                $("#displayImage").html("");
-                            });
-                    })
-                    console.log("done populating");
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
                     console.log(errorThrown);
@@ -170,6 +147,7 @@
                     $('#director-input').val('');
                     $('#genre-input').val('');
                     $('#image-input').val('');
+                    GetAllMovies();
 
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
@@ -177,7 +155,7 @@
                 }
             });
             e.preventDefault();
-            GetAllMovies();
+
         }
 
 
@@ -215,8 +193,27 @@
             deleteMovie(toDelete);
         });
 
-        //// EVENT HANDLERS
 
+
+        //////////// SORT ????????? /////////////////////////
+
+        $('#title-head').click(() => {
+            console.log("title");
+            let titleSorted = allData.sort((a, b) => (a.Title > b.Title) ? 1 : -1)
+            DisplayMovies(titleSorted);
+        });
+
+        $('#director-head').click(() => {
+            let titleSorted = allData.sort((a, b) => (a.DirectorName > b.DirectorName) ? 1 : -1)
+            DisplayMovies(titleSorted);
+        });
+
+        $('#genre-head').click(() => {
+            let titleSorted = allData.sort((a, b) => (a.Genre > b.Genre) ? 1 : -1)
+            DisplayMovies(titleSorted);
+        });
+
+        /////////////
 
 
         $('#update-form').submit(putForm);
@@ -225,6 +222,41 @@
             $('#updatePop').hide();
             $("#createPop").toggle();
         });
+
+
+
+
+        function DisplayMovies(data) {
+
+            $('#results').html('');
+
+            allData.forEach(item => {
+
+                $('#results')
+                    .append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td><i>' + item.Title + '</i></td><td>' + item.DirectorName + '</td><td>' + item.Genre + '</td></tr>')
+                    .on("click", '#m' + item.MovieId, function () {
+                        $('#title-input').val(item.Title);
+                        $('#director-input').val(item.DirectorName);
+                        $('#genre-input').val(item.Genre);
+                        $('#image-input').val(item.ImageUrl);
+                        $('#id-input').val(item.MovieId);
+                        $('#createPop').hide();
+                        //$('#updatePop').show();
+                        $("#updatePop").slideDown("fast", function () {
+                            // Animation complete.
+                        });
+                    })
+                    .on("mouseover", '#m' + item.MovieId, function () {
+                        $("#displayImage").html("");
+                        $("#displayImage").append('<img id =\"currentMovieImage\" src=\"' + item.ImageUrl + '\"  >');
+                        //$("#displayImage").append('<h1>Hello</h1>');
+                    })
+                    .on("mouseout", '#m' + item.MovieId, function () {
+                        $("#displayImage").html("");
+                    });
+            })
+            console.log("done populating");
+        }
 
 
     })(jQuery);
