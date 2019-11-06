@@ -1,11 +1,12 @@
 {
-    var allData;
-    var idForRecordToUpdate;
-
     (function ($) {
 
-        function searchForm(e) {
+        var allData;
+        var idForRecordToUpdate;
 
+
+
+        function searchForm(e) {
             // get the values from the searchFrom
             let searchType = $("#search-type-list option:selected").text();
             let searchInputText = $("#search-input-text").val();
@@ -45,11 +46,11 @@
         } // end of searchForm
 
         $('#search-form').submit(searchForm);
-    })(jQuery);
 
 
 
-    (function ($) {
+
+
         function postMovie(e) {
             var dict = {
                 Title: this["title"].value,
@@ -78,65 +79,18 @@
                     console.log(errorThrown);
                 }
             });
-
-            // now update all records on main table?
-
-            $('#results').html('');
-            //$('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>');
-
-            $.ajax({
-                url: 'https://localhost:44352/api/movie',
-                dataType: 'json',
-                type: 'get',
-                contentType: 'application/json',
-
-                success: function (data, textStatus, jQxhr) {
-                    allData = data;
-
-                    allData.forEach(item => {
-
-                        $('#results')
-                            .append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td><i>' + item.Title + '</i></td><td>' + item.DirectorName + '</td><td>' + item.Genre + '</td></tr>')
-                            .on("click", '#m' + item.MovieId, function () {
-                                $('#title-input').val(item.Title);
-                                $('#director-input').val(item.DirectorName);
-                                $('#genre-input').val(item.Genre);
-                                $('#image-input').val(item.ImageUrl);
-                                $('#id-input').val(item.MovieId);
-                                $('#updatePop').show();
-                            })
-                            .on("mouseover", '#m' + item.MovieId, function () {
-                                $("#displayImage").html("");
-                                $("#displayImage").append('<img id =\"currentMovieImage\" src=\"' + item.ImageUrl + '\" alt=\"' + item.ImageUrl + '\" >');
-                            })
-                            .on("mouseout", '#m' + item.MovieId, function () {
-                                $("#displayImage").html("");
-                            });
-
-                    });
-
-                    console.log("done populating");
-
-                },
-                error: function (jqXhr, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                }
-
-            })
-            // end of Ajax call
-
             e.preventDefault();
+
+            GetAllMovies();
         }
 
         $('#my-form').submit(postMovie);
-    })(jQuery);
 
 
-    (function ($) {
+
+
         function GetAllMovies(e) {
             $('#results').html('');
-            //$('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td><td></td></tr>')
-
             $.ajax({
                 url: 'https://localhost:44352/api/movie',
                 dataType: 'json',
@@ -165,40 +119,32 @@
                                 $("#displayImage").html("");
                                 $("#displayImage").append('<img id =\"currentMovieImage\" src=\"' + item.ImageUrl + '\"  >');
                                 //$("#displayImage").append('<h1>Hello</h1>');
-
-
-
                             })
                             .on("mouseout", '#m' + item.MovieId, function () {
                                 $("#displayImage").html("");
                             });
-
                     })
-
                     console.log("done populating");
-
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
                     console.log(errorThrown);
                 }
-
             })
-
             e.preventDefault();
         }
 
         $(document).ready(GetAllMovies);
         $("#ALL").hide();
-    })(jQuery);
-
-
-
-    //////////// make update form with placeholders
 
 
 
 
-    (function ($) {
+
+
+
+
+
+
         function putForm(e) {
             var dict = {
                 Title: this["title"].value,
@@ -236,77 +182,81 @@
 
             // now update all records on main table?
 
-            $('#results').html('');
-            //$('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td></tr>')
+            // $('#results').html('');
+            // //$('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td></tr>')
 
-            $.ajax({
-                url: 'https://localhost:44352/api/movie',
-                dataType: 'json',
-                type: 'get',
-                contentType: 'application/json',
+            // $.ajax({
+            //     url: 'https://localhost:44352/api/movie',
+            //     dataType: 'json',
+            //     type: 'get',
+            //     contentType: 'application/json',
 
-                success: function (data, textStatus, jQxhr) {
-                    allData = data;
+            //     success: function (data, textStatus, jQxhr) {
+            //         allData = data;
 
-                    console.log("success?");
-                    console.log(data);
+            //         console.log("success?");
+            //         console.log(data);
 
-                    allData.forEach(item => {
+            //         allData.forEach(item => {
 
-                        $('#results')
-                            .append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td><i>' + item.Title + '</i></td><td>' + item.DirectorName + '</td><td>' + item.Genre + '</td></tr>')
-                            .on("click", '#m' + item.MovieId, function () {
-                                $('#title-input').val(item.Title);
-                                $('#director-input').val(item.DirectorName);
-                                $('#genre-input').val(item.Genre);
-                                $('#image-input').val(item.ImageUrl);
-                                $('#id-input').val(item.MovieId);
-                                $('#updatePop').show();
-                            })
-                            .on("mouseover", '#m' + item.MovieId, function () {
-                                $("#displayImage").html("");
-                                $("#displayImage").append('<img id =\"currentMovieImage\" src=\"' + item.ImageUrl + '\" alt=\"' + item.ImageUrl + '\" >');
-                                //$("#displayImage").append('<h1>Hello</h1>');
+            //             $('#results')
+            //                 .append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td><i>' + item.Title + '</i></td><td>' + item.DirectorName + '</td><td>' + item.Genre + '</td></tr>')
+            //                 .on("click", '#m' + item.MovieId, function () {
+            //                     $('#title-input').val(item.Title);
+            //                     $('#director-input').val(item.DirectorName);
+            //                     $('#genre-input').val(item.Genre);
+            //                     $('#image-input').val(item.ImageUrl);
+            //                     $('#id-input').val(item.MovieId);
+            //                     $('#updatePop').show();
+            //                 })
+            //                 .on("mouseover", '#m' + item.MovieId, function () {
+            //                     $("#displayImage").html("");
+            //                     $("#displayImage").append('<img id =\"currentMovieImage\" src=\"' + item.ImageUrl + '\" alt=\"' + item.ImageUrl + '\" >');
+            //                     //$("#displayImage").append('<h1>Hello</h1>');
 
 
 
-                            })
-                            .on("mouseout", '#m' + item.MovieId, function () {
-                                $("#displayImage").html("");
-                            });
+            //                 })
+            //                 .on("mouseout", '#m' + item.MovieId, function () {
+            //                     $("#displayImage").html("");
+            //                 });
 
-                    })
+            //         })
 
-                    console.log("done populating");
+            //         console.log("done populating");
 
-                },
-                error: function (jqXhr, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                }
+            //     },
+            //     error: function (jqXhr, textStatus, errorThrown) {
+            //         console.log(errorThrown);
+            //     }
 
-            })
+            // })
 
-            // end 
+            // // end 
 
             // end
 
             e.preventDefault();
+            GetAllMovies();
         }
 
         $('#update-form').submit(putForm);
+
+
+
+        ////// show creat button
+        $("#showCreate").click(function () {
+            $('#updatePop').hide();
+            $("#createPop").toggle();
+        });
+
+
+        // $.when(postMovie()).done(function () {
+        //     GetAllMovies();
+        // });
+
+
     })(jQuery);
-
-
-    ////// show creat button
-    $("#showCreate").click(function () {
-        $('#updatePop').hide();
-        $("#createPop").toggle();
-    });
-
-    // in several spots... $("#createPop").hide()... should be added;
-    /////
-
-
 }
 
 

@@ -68,7 +68,7 @@ body{
  #results{
      
      text-align: left;
-     width: 100%;
+     width: 95%;
      margin-right: 1%;
      margin-left: 2%;
  }
@@ -147,7 +147,7 @@ body{
     float: left;
     max-height: 400px;
     width: 100%;
-    overflow: auto;
+    overflow-y: scroll;
 }
 
 
