@@ -5,6 +5,7 @@
         var idForRecordToUpdate;
 
 
+        /////////////////////// SEARCH MOVIES ///////////////////////////////////
 
         function searchForm(e) {
             // get the values from the searchFrom
@@ -49,7 +50,7 @@
 
 
 
-
+        /////////////////////// ADD MOVIE ///////////////////////////////////
 
         function postMovie(e) {
             var dict = {
@@ -87,6 +88,7 @@
         $('#my-form').submit(postMovie);
 
 
+        /////////////////////// GET ALL MOVIES ///////////////////////////////////
 
 
         function GetAllMovies(e) {
@@ -113,7 +115,11 @@
                                 $('#genre-input').val(item.Genre);
                                 $('#image-input').val(item.ImageUrl);
                                 $('#id-input').val(item.MovieId);
-                                $('#updatePop').show();
+                                $('#createPop').hide();
+                                //$('#updatePop').show();
+                                $("#updatePop").slideDown("fast", function () {
+                                    // Animation complete.
+                                });
                             })
                             .on("mouseover", '#m' + item.MovieId, function () {
                                 $("#displayImage").html("");
@@ -137,13 +143,7 @@
         $("#ALL").hide();
 
 
-
-
-
-
-
-
-
+        /////////////////////// UPDATE/EDIT MOVIE ///////////////////////////////////
 
         function putForm(e) {
             var dict = {
@@ -163,97 +163,26 @@
                 success: function (data, textStatus, jQxhr) {
                     console.log("success?");
                     $('#updatePop').hide();
-
-
                     $('#title-input').val('');
                     $('#director-input').val('');
                     $('#genre-input').val('');
                     $('#image-input').val('');
-
 
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
                     console.log(errorThrown);
                 }
             });
-
-            // start
-
-
-            // now update all records on main table?
-
-            // $('#results').html('');
-            // //$('#results').append('<tr><td class=\"tableHead\">Title</td><td class=\"tableHead\">Director</td><td class=\"tableHead\">Genre</td></tr>')
-
-            // $.ajax({
-            //     url: 'https://localhost:44352/api/movie',
-            //     dataType: 'json',
-            //     type: 'get',
-            //     contentType: 'application/json',
-
-            //     success: function (data, textStatus, jQxhr) {
-            //         allData = data;
-
-            //         console.log("success?");
-            //         console.log(data);
-
-            //         allData.forEach(item => {
-
-            //             $('#results')
-            //                 .append('<tr id=\"m' + item.MovieId + '\" class=\"movieList\"><td><i>' + item.Title + '</i></td><td>' + item.DirectorName + '</td><td>' + item.Genre + '</td></tr>')
-            //                 .on("click", '#m' + item.MovieId, function () {
-            //                     $('#title-input').val(item.Title);
-            //                     $('#director-input').val(item.DirectorName);
-            //                     $('#genre-input').val(item.Genre);
-            //                     $('#image-input').val(item.ImageUrl);
-            //                     $('#id-input').val(item.MovieId);
-            //                     $('#updatePop').show();
-            //                 })
-            //                 .on("mouseover", '#m' + item.MovieId, function () {
-            //                     $("#displayImage").html("");
-            //                     $("#displayImage").append('<img id =\"currentMovieImage\" src=\"' + item.ImageUrl + '\" alt=\"' + item.ImageUrl + '\" >');
-            //                     //$("#displayImage").append('<h1>Hello</h1>');
-
-
-
-            //                 })
-            //                 .on("mouseout", '#m' + item.MovieId, function () {
-            //                     $("#displayImage").html("");
-            //                 });
-
-            //         })
-
-            //         console.log("done populating");
-
-            //     },
-            //     error: function (jqXhr, textStatus, errorThrown) {
-            //         console.log(errorThrown);
-            //     }
-
-            // })
-
-            // // end 
-
-            // end
-
             e.preventDefault();
             GetAllMovies();
         }
 
         $('#update-form').submit(putForm);
 
-
-
-        ////// show creat button
         $("#showCreate").click(function () {
             $('#updatePop').hide();
             $("#createPop").toggle();
         });
-
-
-        // $.when(postMovie()).done(function () {
-        //     GetAllMovies();
-        // });
 
 
     })(jQuery);
