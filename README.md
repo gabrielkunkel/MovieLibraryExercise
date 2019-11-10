@@ -5,13 +5,14 @@ Technologies: ASP.NET Web API, JavaScript, jQuery, AJAX, HTML, CSS
 
 ## The Collaborators
 
-gabrielkunkel and alexhardy872, who are actively seeking employment.
+...who are actively seeking employment.
+
+[Gabriel Kunkel](https://github.com/gabrielkunkel). Find his resume at: [https://stackoverflow.com/story/gabrielkunkel](https://stackoverflow.com/story/gabrielkunkel)
+
+[Alex Hardy](https://github.com/alexHardy872).
 
 
-<p align="center"> 
-USER STORIES
-</p>
-
+## Developer Tasks
 ### As a Developer...
 
 - [X] I create a Movie model with properties for title, genre, and director name.
@@ -26,7 +27,7 @@ USER STORIES
 
 - [X] I have an aesthetically pleasing user interface (webpages) to ensure a great user experience.
 
-
+## User Stories
 ### As a Film Enthusiast User...
 
 - [X] I can add a new movie with details, including title, genre, and director name.
@@ -39,6 +40,6 @@ USER STORIES
 
 - [X] I can see a image of a movie when my mouse arrow is over its record.
 
-- [X] I can search for a movie by one of the movie’s fields. Once I select title, genre, or director name, I can then search for any partial matches of the selected field and find the movie I am looking for.
+- [X] I can search for a movie by one of the movieâ€™s fields. Once I select title, genre, or director name, I can then search for any partial matches of the selected field and find the movie I am looking for.
 
 - [X] I can sort the list of movies alphabetically by title, director, or genre.
